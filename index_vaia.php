@@ -31,6 +31,45 @@ error_reporting(0);
   <script src="html2canvas.min.js" type="text/javascript"></script> 
   <style>
     /* new Added */
+
+.accordion {
+  background-color: #b8b8b8;
+  
+  cursor: pointer;
+  padding: 18px 8px 18px 8px ;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+
+.accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  display: none;
+  
+  
+  overflow: hidden;
+}
+    
+    
+    
     @media only screen 
   and (min-device-width: 320px) 
   and (max-device-width: 992px)
@@ -470,11 +509,11 @@ error_reporting(0);
             </a>
           </li-->
           <?php //} ?>
-          <li class="nav-item nav-category">
-            <span class="nav-link">Choose your Staircase</span>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link choosebgbtn" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+          <button class="accordion ">Choose your Staircase</button>
+<div class="panel">
+ 
+          <li class="nav-item menu-items" >
+            <a class="nav-link choosebgbtn" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic" style="margin-left:12px;padding-left:0">
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
               </span>
@@ -497,10 +536,11 @@ error_reporting(0);
           </div>
         </li>
 
-        <li class="nav-item nav-category whenstairchoosed">
-          <span class="nav-link">Colour Sections</span>
-        </li>
-        <li class="nav-item menu-items whenstairchoosed" id="treads" >
+</div>
+
+<button class="accordion">Colour Sections</button>
+<div class="panel">
+  <li class="nav-item menu-items whenstairchoosed" id="treads" >
           <a class="nav-link basiccolors" data-toggle="collapse" value="treads" href="#treadcolors" aria-expanded="false" aria-controls="ui-basic">
             <span class="menu-icon">
               <i class="mdi mdi-stairs"></i>
@@ -640,15 +680,17 @@ error_reporting(0);
     </ul>
   </div>
 </li>
-<li class="nav-item nav-category whenstairchoosed">
-  <span class="nav-link">Parts Sections</span>
-</li>
+</div>
+
+<button class="accordion">Parts Sections</button>
+<div class="panel">
+ 
 <li class="nav-item menu-items whenstairchoosed" id="mybalu">
-  <a class="nav-link designtypeddbtn" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
+  <a class="nav-link designtypeddbtn" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic" style="margin-left:8px;padding-left:0">
     <span class="menu-icon">
       <i class="mdi mdi-laptop"></i>
     </span>
-    <span class="menu-title ">Choose your Balustrade</span>
+    <span class="menu-title ">Choose Balustrade</span>
     <i class="menu-arrow"></i>
   </a>
   <div class="collapse" id="ui-basic2">
@@ -765,6 +807,11 @@ error_reporting(0);
    </div>
  </div>
 </li>
+</div>
+          
+       
+        
+
 <li class="nav-item menu-items whenstairchoosed HideMeOnDesktop">
   <a class="nav-link" href="#">
     <span class="menu-icon">
@@ -6666,5 +6713,23 @@ function loadRectangles(){
     ?>
     <script>
     </script>
+    <!---Added by Kamal Start -->
+    <script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+    <!---Added by Kamal End -->
   </body>
   </html>
